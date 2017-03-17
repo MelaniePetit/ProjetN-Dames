@@ -1,64 +1,73 @@
 package src.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 import src.Main;
 
-import java.util.Scanner;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Optional;
 
 /**
  * Created by Mel on 08/03/2017.
  */
 public class resultController {
     private Main main;
+    private BorderPane root = new BorderPane();
+
+    @FXML
+    private Button menu;
 
     @FXML
     private GridPane grid;
 
     public resultController() {
-        GridPane grid = new GridPane();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Saisissez la taille du plateau : ");
-        int i = sc.nextInt();
+    }
 
-        for (int row = 0; row < (i + 1); row++) {
-            for (int col = 0; col < (i + 1); col++) {
-                if (col == 0 && row != i) {
-                    textDisplay(grid, Integer.toString(row), row, col);
-                } else if (row != i) {
-                    Rectangle rec = new Rectangle();
-                    rec.setWidth(50);
-                    rec.setHeight(50);
-                    if ((row % 2 == 0 && col % 2 == 0) || (row % 2 != 0 && col % 2 != 0)) {
-                        rec.setFill(Color.WHITE);
-                    } else {
-                        rec.setFill(Color.BLACK);
-                    }
-                    GridPane.setRowIndex(rec, row);
-                    GridPane.setColumnIndex(rec, col);
-                    grid.getChildren().addAll(rec);
-                }
-            }
-            if (row == i) {
-                for (int col = 0; col < (i + 1); col++) {
-                    if (col == 0) {
-                        textDisplay(grid, "/", row, col);
-                    } else {
-                        textDisplay(grid, Integer.toString(col - 1), row, col);
-                    }
-                }
-            }
+
+    @FXML
+    public void quit(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Quitter");
+        alert.setHeaderText("Vous êtes sur le point de fermer l'application.");
+        alert.setContentText("Voulez-vous vraiment quitter ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            System.exit(0);
+        } else {
+            alert.close();
         }
     }
 
     @FXML
-    public void quit(){
-        main.getPrimaryStage().close();
+    public void relaunch(){
+        Stage stage = (Stage) menu.getScene().getWindow();
+        stage.close();
+
+        Scene scene = null;
+        try {
+            final URL url = getClass().getResource("../view/Start.fxml");
+            final FXMLLoader loader = new FXMLLoader(url);
+            root = (BorderPane) loader.load();
+            scene = new Scene(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
+        stage.setTitle("Projet Dames - Optimisation");
+        stage.setResizable(false);
+        stage.show();
     }
 
     private void textDisplay(GridPane grid, String theText, int row, int col) {
