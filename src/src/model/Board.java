@@ -27,6 +27,7 @@ public class Board {
 
         System.out.println("Original :");
         showBoard();
+        this.fitness = countConflict();
 
 //        showNeighbours();
 //        for (Case c : queensList){
@@ -47,6 +48,8 @@ public class Board {
         }
         creatListQueen();
         listNeighbours();
+        this.fitness = countConflict();
+
 
 //        System.out.println("Copie à partir d'existant :");
 //        showBoard();
@@ -174,4 +177,9 @@ public class Board {
     public void setQueensList(ArrayList<Case> queensList) {
         this.queensList = queensList;
     }
+
+    public void setFitness(int fitness) {
+        this.fitness = fitness;
+    }
+
 }
