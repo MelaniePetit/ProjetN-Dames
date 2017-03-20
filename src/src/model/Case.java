@@ -36,6 +36,7 @@ public class Case {
     }
 
     public void addNeighbours() {
+        neighboursList = new ArrayList<>();
         for (int i = 0; i < board.getRowNb(); i++) {
             Object neighbours;
             if (y != i) {

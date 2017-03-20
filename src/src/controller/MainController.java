@@ -76,7 +76,7 @@ public class MainController {
             if (!(size.getText().equals("")) && testDigit(size.getText())) {
                 sizeBoard = Integer.parseInt(size.getText());
                 board = new Board(sizeBoard);
-                RecuitAlgorithm algorithm = new RecuitAlgorithm(board);
+                RecuitAlgorithm algorithm = new RecuitAlgorithm(board,100);
             } else {
                 errorSize();
                 return;

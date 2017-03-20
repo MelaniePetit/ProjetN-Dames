@@ -12,6 +12,7 @@ public class Board {
     private Case[][] board ;
     private int fitness;
     private ArrayList<Case> queensList = new ArrayList<>();
+    private ArrayList<Board> neighboursList = new ArrayList<>();
 
     public Board(int nb) {
         rowNb = nb;
@@ -27,13 +28,19 @@ public class Board {
 
         System.out.println("Original :");
         showBoard();
-        this.fitness = countConflict();
+        fitness = countConflict();
 
 //        showNeighbours();
 //        for (Case c : queensList){
 //            System.out.print(c.getName());
 //
 //        }
+        addAllNeighbours();
+//        for (Board bo : neighboursList){
+//            System.out.println("Voisin :");
+//            bo.showBoard();
+//        }
+
 
     }
 
@@ -48,8 +55,6 @@ public class Board {
         }
         creatListQueen();
         listNeighbours();
-        this.fitness = countConflict();
-
 
 //        System.out.println("Copie à partir d'existant :");
 //        showBoard();
@@ -141,6 +146,7 @@ public class Board {
     }
 
     public void creatListQueen(){
+        queensList = new ArrayList<>();
         for (int i = 0; i < rowNb; i++) {
             for (int j = 0; j < rowNb; j++) {
                 if (board[i][j].isQueen())
@@ -149,6 +155,47 @@ public class Board {
         }
     }
 
+    public void addAllNeighbours() {
+        for (int i = this.getQueensList().size()-1; i >= 0 ; i--){                                                  // on parcourt la liste à l'envers car elle est mofifiée
+            Board boardClone = this.clone();                                                                        // on crée une nouvelle instance de l'objet boardInit avec le meme damier que le premier
+            moveQueenRight(boardClone.getQueensList().get(i), boardClone);
+            boardClone = this.clone();
+            moveQueenLeft(boardClone.getQueensList().get(i), boardClone);
+        }
+    }
+
+    public void moveQueenRight(Case q, Board b){
+        if (q.getY() + 1 < b.getRowNb()) {
+            q.setQueen(false);
+            b.update();
+            b.getBoard()[q.getX()][q.getY() + 1].setQueen(true);
+            b.getQueensList().add(b.getBoard()[q.getX()][q.getY() + 1]);
+            b.creatListQueen();
+            b.listNeighbours();
+            b.setFitness(b.countConflict());
+
+//            System.out.println("queen right");
+//            b.showBoard();
+            this.neighboursList.add(b);
+        }
+
+    }
+
+    public void moveQueenLeft(Case q, Board b){
+        if (q.getY() - 1 >= 0) {
+            q.setQueen(false);
+            b.update();
+            b.getBoard()[q.getX()][q.getY() - 1].setQueen(true);
+            b.getQueensList().add(b.getBoard()[q.getX()][q.getY() - 1]);
+            b.creatListQueen();
+            b.listNeighbours();
+            b.setFitness(b.countConflict());
+            //System.out.println("queen left");
+            //b.showBoard();
+            this.neighboursList.add(b);
+        }
+
+    }
     //Getter and Setter
     public Case[][] getBoard(){
         return board;
@@ -182,4 +229,11 @@ public class Board {
         this.fitness = fitness;
     }
 
+    public ArrayList<Board> getNeighboursList() {
+        return neighboursList;
+    }
+
+    public void setNeighboursList(ArrayList<Board> neighboursList) {
+        this.neighboursList = neighboursList;
+    }
 }
