@@ -14,7 +14,7 @@ public class RecuitAlgorithm {
 
 
     public RecuitAlgorithm(Board b, int nbTemp){
-        this.xmin = b;
+        this.xmin = b; //Idem original
         temp = -((xmin.getRowNb()^2)/Math.log(0.8));
         fmin = xmin.getFitness();
         this.nbTemperatures = nbTemp;
@@ -35,12 +35,11 @@ public class RecuitAlgorithm {
                 Board y = boardTransition.getNeighboursList().get(i);
                 y.addAllNeighbours();
                 System.out.println("Y: ");
-                y.showBoard(); //Problème de fitness...
+                y.showBoard();
                 double deltaF = y.getFitness() - boardTransition.getFitness();
 
                 if (deltaF <= 0){ //y mieux que board initial
                     if (y.getFitness() < xmin.getFitness()){
-                        xmin.setFitness(y.getFitness());
                         xmin = y;
                     }
                 } else {
@@ -50,14 +49,15 @@ public class RecuitAlgorithm {
                     }
 
                 }
+                mu = k/nbTemperatures;
+                temp = mu*temp;
             }
-            mu = k/nbTemperatures;
-            temp = mu*temp;
+
 
         }
         System.out.println("Fitness finale: "+xmin.getFitness());
         System.out.println("Recuit simulé: ");
-        boardTransition.showBoard();
+        xmin.showBoard();
     }
 
 
