@@ -24,6 +24,7 @@ public class RecuitAlgorithm {
 
     }
 
+    //FAIRE UN EXEMPLE SUR PAPIER, IL Y A SUREMENT UN SOUCIS ENTRE BORDTRANS ET XMIN ET Y: cf fitness sur l'affichage
     public void algorithm(){
         Board boardTransition = xmin;
 
@@ -34,7 +35,7 @@ public class RecuitAlgorithm {
                 Board y = boardTransition.getNeighboursList().get(i);
                 y.addAllNeighbours();
                 System.out.println("Y: ");
-                y.showBoard();
+                y.showBoard(); //Problème de fitness...
                 double deltaF = y.getFitness() - boardTransition.getFitness();
 
                 if (deltaF <= 0){ //y mieux que board initial

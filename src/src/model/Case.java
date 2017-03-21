@@ -15,7 +15,6 @@ public class Case {
     private ImageView imageCase;
     private ArrayList<Case> neighboursList = new ArrayList<>();
     private boolean queen = false;
-    private int conflit = 0;
 
 
     public Case(int x, int y, Board board){
@@ -70,9 +69,6 @@ public class Case {
 
         }
     }
-
-//    public void countConflict()
-
 
 
     //Getter & Setter
@@ -130,13 +126,5 @@ public class Case {
 
     public void setNeighboursList(ArrayList<Case> neighboursList) {
         this.neighboursList = neighboursList;
-    }
-
-    public int getConflit() {
-        return conflit;
-    }
-
-    public void setConflit(int conflit) {
-        this.conflit = conflit;
     }
 }

@@ -23,12 +23,12 @@ public class Board {
 
             }
         }
-        randomBoard();
-        listNeighbours();
+        randomBoard(); //Placement des reines au hasard, 1 par ligne
+        listNeighbours(); //Calcul des voisins de chaque case (ligne, colonne, diagonales)
+        fitness = countConflict();
 
         System.out.println("Original :");
         showBoard();
-        fitness = countConflict();
 
 //        showNeighbours();
 //        for (Case c : queensList){
@@ -59,11 +59,8 @@ public class Board {
 //        System.out.println("Copie à partir d'existant :");
 //        showBoard();
 
-//        showNeighbours();
-//        for (Case c : queensList){
-//            System.out.print(c.getName());
-//
-//        }
+        //showNeighbours();
+
 
     }
 
@@ -74,6 +71,7 @@ public class Board {
             }
         }
     }
+
 
 
     public void randomBoard(){
@@ -103,7 +101,11 @@ public class Board {
                 }
             }
             System.out.println("\n");
-
+        }
+        System.out.println("Fitness: "+fitness);
+        System.out.println("_________________");
+        for (Case c : queensList){
+            System.out.print(c.getName()+" \n");
         }
 
     }
@@ -190,8 +192,8 @@ public class Board {
             b.creatListQueen();
             b.listNeighbours();
             b.setFitness(b.countConflict());
-            //System.out.println("queen left");
-            //b.showBoard();
+//            System.out.println("queen left");
+//            b.showBoard();
             this.neighboursList.add(b);
         }
 
