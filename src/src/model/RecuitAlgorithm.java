@@ -39,8 +39,9 @@ public class RecuitAlgorithm {
                 double deltaF = y.getFitness() - boardTransition.getFitness();
 
                 if (deltaF <= 0){ //y mieux que board initial
-                    if (y.getFitness() < xmin.getFitness()){
-                        xmin = y;
+                    boardTransition = y;
+                    if (boardTransition.getFitness() < xmin.getFitness()){
+                        xmin = boardTransition;
                     }
                 } else {
                     float p = r.nextInt(10)/10;
