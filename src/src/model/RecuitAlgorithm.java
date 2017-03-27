@@ -24,7 +24,42 @@ public class RecuitAlgorithm {
 
     }
 
-    //FAIRE UN EXEMPLE SUR PAPIER, IL Y A SUREMENT UN SOUCIS ENTRE BORDTRANS ET XMIN ET Y: cf fitness sur l'affichage
+//    public void algorithm(){
+//        Board boardTransition = xmin;
+//
+//        for(int k = 0; k < nbTemperatures; k++){
+//            for(int l = 1; l < 10*boardTransition.getRowNb(); l++){
+//                Random r = new Random();
+//                int i = r.nextInt(boardTransition.getNeighboursList().size());
+//                Board y = boardTransition.getNeighboursList().get(i);
+//                y.addAllNeighbours();
+//                System.out.println("Y: ");
+////                y.showBoard();
+//                double deltaF = y.getFitness() - boardTransition.getFitness();
+//
+//                if (deltaF <= 0){ //y mieux que board initial
+//                    boardTransition = y;
+//                    if (boardTransition.getFitness() < xmin.getFitness()){
+//                        xmin = boardTransition;
+//                    }
+//                } else {
+//                    float p = r.nextInt(10)/10;
+//                    if (p <= Math.exp(-deltaF/ temp)) {
+//                        boardTransition = y;
+//                    }
+//
+//                }
+//                mu = k/nbTemperatures;
+//                temp = mu*temp;
+//            }
+//
+//
+//        }
+//        System.out.println("Fitness finale: "+xmin.getFitness());
+////        System.out.println("Recuit simulé: ");
+////        xmin.showBoard();
+//    }
+
     public void algorithm(){
         Board boardTransition = xmin;
 
@@ -35,7 +70,7 @@ public class RecuitAlgorithm {
                 Board y = boardTransition.getNeighboursList().get(i);
                 y.addAllNeighbours();
                 System.out.println("Y: ");
-                y.showBoard();
+//                y.showBoard();
                 double deltaF = y.getFitness() - boardTransition.getFitness();
 
                 if (deltaF <= 0){ //y mieux que board initial
@@ -57,8 +92,12 @@ public class RecuitAlgorithm {
 
         }
         System.out.println("Fitness finale: "+xmin.getFitness());
-        System.out.println("Recuit simulé: ");
-        xmin.showBoard();
+//        System.out.println("Recuit simulé: ");
+//        xmin.showBoard();
+    }
+
+    public Board randomNeighbour(Board b){
+
     }
 
 

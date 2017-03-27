@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import src.model.Board;
 import src.model.RecuitAlgorithm;
+import src.model.Tabou;
 
 import java.io.IOException;
 import java.net.URL;
@@ -86,6 +87,8 @@ public class MainController {
         else if(tabou.isSelected()){
             if (!(size.getText().equals(""))&& testDigit(size.getText())){
                 sizeBoard = Integer.parseInt(size.getText());
+                board = new Board(sizeBoard);
+                Tabou algorithm = new Tabou(board);
             }
             else{
                 errorSize();

@@ -27,8 +27,8 @@ public class Board {
         listNeighbours(); //Calcul des voisins de chaque case (ligne, colonne, diagonales)
         fitness = countConflict();
 
-        System.out.println("Original :");
-        showBoard();
+//        System.out.println("Original :");
+//        showBoard();
 
 //        showNeighbours();
 //        for (Case c : queensList){
@@ -198,6 +198,9 @@ public class Board {
         }
 
     }
+
+
+
     //Getter and Setter
     public Case[][] getBoard(){
         return board;
