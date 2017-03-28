@@ -6,16 +6,28 @@ import java.util.Random;
  * Created by Mel on 13/03/2017.
  */
 public class RecuitAlgorithm {
-    private Board xmin;
+//    private Board xmin;
+    private BoardV2 xmin;
     private int fmin;
     private double temp;
     private int nbTemperatures;
     private double mu;
 
 
-    public RecuitAlgorithm(Board b, int nbTemp){
+//    public RecuitAlgorithm(Board b, int nbTemp){
+//        this.xmin = b; //Idem original
+//        temp = -((xmin.getRowNb()^2)/Math.log(0.8));
+//        fmin = xmin.getFitness();
+//        this.nbTemperatures = nbTemp;
+//        mu = nbTemp/100;
+//        algorithm();
+//
+//
+//    }
+
+    public RecuitAlgorithm(BoardV2 b, int nbTemp){
         this.xmin = b; //Idem original
-        temp = -((xmin.getRowNb()^2)/Math.log(0.8));
+        temp = -((xmin.getNbRow()^2)/Math.log(0.8));
         fmin = xmin.getFitness();
         this.nbTemperatures = nbTemp;
         mu = nbTemp/100;
@@ -61,16 +73,15 @@ public class RecuitAlgorithm {
 //    }
 
     public void algorithm(){
-        Board boardTransition = xmin;
+        BoardV2 boardTransition = xmin;
 
         for(int k = 0; k < nbTemperatures; k++){
-            for(int l = 1; l < 10*boardTransition.getRowNb(); l++){
-                Random r = new Random();
-                int i = r.nextInt(boardTransition.getNeighboursList().size());
-                Board y = boardTransition.getNeighboursList().get(i);
-                y.addAllNeighbours();
+            for(int l = 1; l < 10*boardTransition.getNbRow(); l++){
+                BoardV2 y = new BoardV2(boardTransition.getNbRow(), boardTransition.getQueensList());
+                y.moveQueenRandom();
+                y.countConflicts();
                 System.out.println("Y: ");
-//                y.showBoard();
+                y.showBoard();
                 double deltaF = y.getFitness() - boardTransition.getFitness();
 
                 if (deltaF <= 0){ //y mieux que board initial
@@ -79,6 +90,7 @@ public class RecuitAlgorithm {
                         xmin = boardTransition;
                     }
                 } else {
+                    Random r = new Random();
                     float p = r.nextInt(10)/10;
                     if (p <= Math.exp(-deltaF/ temp)) {
                         boardTransition = y;
@@ -96,9 +108,9 @@ public class RecuitAlgorithm {
 //        xmin.showBoard();
     }
 
-    public Board randomNeighbour(Board b){
-
-    }
+//    public Board randomNeighbour(Board b){
+//
+//    }
 
 
 
