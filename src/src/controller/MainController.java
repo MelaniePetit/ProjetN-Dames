@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import src.model.Board;
-import src.model.BoardV2;
 import src.model.RecuitAlgorithm;
 import src.model.Tabou;
 
@@ -77,9 +76,9 @@ public class MainController {
         if (recuitSimule.isSelected()){
             if (!(size.getText().equals("")) && testDigit(size.getText())) {
                 sizeBoard = Integer.parseInt(size.getText());
-                BoardV2 boardV2 = new BoardV2(sizeBoard);
-//                board = new Board(sizeBoard);
-                RecuitAlgorithm algorithm = new RecuitAlgorithm(boardV2,1000);
+                Board board = new Board(sizeBoard);
+                board = new Board(sizeBoard);
+                RecuitAlgorithm algorithm = new RecuitAlgorithm(board,1000);
             } else {
                 errorSize();
                 return;

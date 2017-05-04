@@ -1,244 +1,91 @@
 package src.model;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
+
+import static java.util.Collections.shuffle;
 
 /**
  * Created by Mel on 13/03/2017.
  */
 public class Board {
 
-    private int rowNb;
-    private Case[][] board ;
-    private int fitness;
-    private ArrayList<Case> queensList = new ArrayList<>();
-    private ArrayList<Board> neighboursList = new ArrayList<>();
+    //Size of the board
+    private int size;
 
-    public Board(int nb) {
-        rowNb = nb;
-        board = new Case[rowNb][rowNb];
-        for (int i = 0; i < rowNb; i++) { //i ligne, j colonne
-            for (int j = 0; j < rowNb; j++) {
-                board[i][j] = new Case(i,j, this); //mettre l'instance en 3eme argument ou l'attribut board ?
+    //Array of rows
+    private ArrayList<Integer> rows; //liste ou tableau ?
 
-            }
-        }
-        randomBoard(); //Placement des reines au hasard, 1 par ligne
-        listNeighbours(); //Calcul des voisins de chaque case (ligne, colonne, diagonales)
-        fitness = countConflict();
-
-//        System.out.println("Original :");
-//        showBoard();
-
-//        showNeighbours();
-//        for (Case c : queensList){
-//            System.out.print(c.getName());
-//
-//        }
-        addAllNeighbours();
-//        for (Board bo : neighboursList){
-//            System.out.println("Voisin :");
-//            bo.showBoard();
-//        }
-
-
+    //Constructor
+    public Board(int boardSize){
+        size = boardSize;
+        rows = new ArrayList<>();
+        initRows();
     }
 
-    public Board (int i, Case[][] old){                                             //Constructeur permmettant la création d'une nouvelle instance en copiant un damier existant
-        rowNb = i;
-        board = new Case[i][i];
-        for (int k = 0; k < rowNb; k++) {                                           //k ligne, j colonne
-            for (int j = 0; j < rowNb; j++) {
-                board[k][j] = new Case(old[k][j].getX(), old[k][j].getY(), this, old[k][j].isQueen()) ;
-            }
-
-        }
-        creatListQueen();
-        listNeighbours();
-
-//        System.out.println("Copie à partir d'existant :");
-//        showBoard();
-
-        //showNeighbours();
-
-
+    public Board(ArrayList<Integer> rowsNeighboor) {
+        size = rowsNeighboor.size();
+        rows = rowsNeighboor;
     }
 
-    private void listNeighbours() {
-        for (int i = 0; i < rowNb; i++) { //i ligne, j colonne
-            for (int j = 0; j < rowNb; j++) {
-                board[i][j].addNeighbours();
-            }
+    //Initialization of columns and rows - 1 queen by column and by row
+    public void initRows(){
+        for(int i = 0; i < size ; i++ ){
+            rows.add(i);
         }
+        shuffle(rows);
     }
 
+    //fitness
+    public int fitness(){
 
+        int fitness = 0;
 
-    public void randomBoard(){
-        for (int k = 0; k < rowNb; k++){
-            Random r = new Random();
-            int i = r.nextInt(rowNb);
-            if (board[k][i].isQueen()){
-                k--;
-            }
-            else{
-                board[k][i].setQueen(true);
-                queensList.add(board[k][i]);
-            }
+        for(int i = 0; i < size ; i++){
 
-        }
-    }
+            int columnRef = rows.get(i);
 
+            for(int j = i + 1 ; j < size ; j++){
+                int columnTest = rows.get(j);
 
-    public void showBoard() {
-        for (int i = 0; i < rowNb; i++) {
-            for (int j = 0; j < rowNb; j++) {
-                if (board[i][j].isQueen())
-                    System.out.print(1 + " ");
-                else{
-                    System.out.print(0 + " ");
+                if(Math.abs(i-j) == Math.abs(columnRef - columnTest)){
 
-                }
-            }
-            System.out.println("\n");
-        }
-        System.out.println("Fitness: "+fitness);
-        System.out.println("_________________");
-        for (Case c : queensList){
-            System.out.print(c.getName()+" \n");
-        }
+                    fitness++;
 
-    }
-
-    public void showNeighbours(){
-        for (int i = 0; i < rowNb; i++) {
-            for (int j = 0; j < rowNb; j++) {
-                System.out.println(board[i][j].getName() + " a pour voisin :");
-                for (Case c: board[i][j].getNeighboursList()) {
-                    System.out.println(c.getName());
-                }
-            }
-        }
-    }
-
-    public int countConflict(){
-        int conflicts = 0;
-        for (Case c : queensList){
-            for (Case n : c.getNeighboursList()){
-                if (n.isQueen()){
-                    conflicts++;
                 }
 
             }
-        }
-        return conflicts/2;
-    }
 
-    public void update(){
-        for (int i = queensList.size()-1; i > 0 ; i--){
-            if (!queensList.get(i).isQueen()){
-                queensList.remove(i);
-            }
-        }
-    }
-
-    public Board clone(){
-        Board newBoard = new Board(rowNb, board);
-        return newBoard;
-    }
-
-    public void creatListQueen(){
-        queensList = new ArrayList<>();
-        for (int i = 0; i < rowNb; i++) {
-            for (int j = 0; j < rowNb; j++) {
-                if (board[i][j].isQueen())
-                    queensList.add(board[i][j]);
-            }
-        }
-    }
-
-    public void addAllNeighbours() {
-        for (int i = this.getQueensList().size()-1; i >= 0 ; i--){                                                  // on parcourt la liste à l'envers car elle est mofifiée
-            Board boardClone = this.clone();                                                                        // on crée une nouvelle instance de l'objet boardInit avec le meme damier que le premier
-            moveQueenRight(boardClone.getQueensList().get(i), boardClone);
-            boardClone = this.clone();
-            moveQueenLeft(boardClone.getQueensList().get(i), boardClone);
-        }
-    }
-
-    public void moveQueenRight(Case q, Board b){
-        if (q.getY() + 1 < b.getRowNb()) {
-            q.setQueen(false);
-            b.update();
-            b.getBoard()[q.getX()][q.getY() + 1].setQueen(true);
-            b.getQueensList().add(b.getBoard()[q.getX()][q.getY() + 1]);
-            b.creatListQueen();
-            b.listNeighbours();
-            b.setFitness(b.countConflict());
-
-//            System.out.println("queen right");
-//            b.showBoard();
-            this.neighboursList.add(b);
         }
 
-    }
-
-    public void moveQueenLeft(Case q, Board b){
-        if (q.getY() - 1 >= 0) {
-            q.setQueen(false);
-            b.update();
-            b.getBoard()[q.getX()][q.getY() - 1].setQueen(true);
-            b.getQueensList().add(b.getBoard()[q.getX()][q.getY() - 1]);
-            b.creatListQueen();
-            b.listNeighbours();
-            b.setFitness(b.countConflict());
-//            System.out.println("queen left");
-//            b.showBoard();
-            this.neighboursList.add(b);
-        }
-
-    }
-
-
-
-    //Getter and Setter
-    public Case[][] getBoard(){
-        return board;
-    }
-
-    public void setBoard(Case[][] board){
-        this.board = board;
-    }
-
-    public void setRowNb(int i){
-        rowNb = i;
-    }
-
-    public int getRowNb(){
-        return rowNb;
-    }
-
-    public int getFitness(){
         return fitness;
     }
 
-    public ArrayList<Case> getQueensList() {
-        return queensList;
+    //Neighboors random
+    public Board neighboorRandom(){
+
+        ArrayList<Integer> rowsNeighboor = new ArrayList<>();
+        System.arraycopy(rows,0,rowsNeighboor,0,size);
+
+        Random r = new Random();
+
+        int row1 = r.nextInt(size);
+
+        int row2 = r.nextInt(size);
+
+        while (row2 == row1){
+
+            row2 = r.nextInt(size);
+
+        }
+
+        int temp = rows.get(row1); //number of the column
+        rowsNeighboor.set(row1, rows.get(row2));
+        rowsNeighboor.set(row2, temp);
+
+        return new Board(rowsNeighboor);
+
     }
 
-    public void setQueensList(ArrayList<Case> queensList) {
-        this.queensList = queensList;
-    }
 
-    public void setFitness(int fitness) {
-        this.fitness = fitness;
-    }
 
-    public ArrayList<Board> getNeighboursList() {
-        return neighboursList;
-    }
-
-    public void setNeighboursList(ArrayList<Board> neighboursList) {
-        this.neighboursList = neighboursList;
-    }
 }
