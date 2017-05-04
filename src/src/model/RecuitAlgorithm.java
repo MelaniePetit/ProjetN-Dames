@@ -75,13 +75,13 @@ public class RecuitAlgorithm {
     public void algorithm(){
         BoardV2 boardTransition = xmin;
 
-        for(int k = 0; k < nbTemperatures; k++){
+        while(xmin.getFitness() > 0){
             for(int l = 1; l < 10*boardTransition.getNbRow(); l++){
                 BoardV2 y = new BoardV2(boardTransition.getNbRow(), boardTransition.getQueensList());
                 y.moveQueenRandom();
-                y.countConflicts();
-                System.out.println("Y: ");
-                y.showBoard();
+                y.setFitness(y.countConflicts());
+//                System.out.println("Y: ");
+//                y.showBoard();
                 double deltaF = y.getFitness() - boardTransition.getFitness();
 
                 if (deltaF <= 0){ //y mieux que board initial
@@ -97,15 +97,17 @@ public class RecuitAlgorithm {
                     }
 
                 }
+                int k = 0;
                 mu = k/nbTemperatures;
                 temp = mu*temp;
+                k++;
             }
 
 
         }
         System.out.println("Fitness finale: "+xmin.getFitness());
-//        System.out.println("Recuit simulé: ");
-//        xmin.showBoard();
+        System.out.println("Recuit simulé: ");
+        xmin.showBoard();
     }
 
 //    public Board randomNeighbour(Board b){

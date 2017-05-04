@@ -79,7 +79,7 @@ public class MainController {
                 sizeBoard = Integer.parseInt(size.getText());
                 BoardV2 boardV2 = new BoardV2(sizeBoard);
 //                board = new Board(sizeBoard);
- //               RecuitAlgorithm algorithm = new RecuitAlgorithm(boardV2,100);
+                RecuitAlgorithm algorithm = new RecuitAlgorithm(boardV2,1000);
             } else {
                 errorSize();
                 return;

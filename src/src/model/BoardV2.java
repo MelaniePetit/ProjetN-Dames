@@ -23,15 +23,17 @@ public class BoardV2 {
         }
         fitness = countConflicts();
         showBoard();
-        moveQueenRandom();
-        fitness = countConflicts();
-        showBoard();
+//        moveQueenRandom();
+//        fitness = countConflicts();
+//        showBoard();
     }
 
     //constructeur prenant une liste de reine deja existante en argument
     public BoardV2(int nbRow, ArrayList<Queen> queensList){
         this.nbRow = nbRow;
-        this.queensList = queensList;           //revoir
+        for (Queen q : queensList) {
+            this.queensList.add(new Queen(q.getRow(), q.getColumn()));
+        }
     }
 
     //calcul de la fitness => nombre de conflit du plateau
@@ -51,7 +53,6 @@ public class BoardV2 {
                     }
                 }
             }
-
         }
         return fit/2;
     }
@@ -62,7 +63,7 @@ public class BoardV2 {
         for (Queen q: queensList) {
             System.out.println(q.getRow() + "x" + q.getColumn());
         }
-        System.out.println("Fitness: "+fitness);
+        System.out.println("Fitness: " + fitness);
         System.out.println("_________________");
     }
 
