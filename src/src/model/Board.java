@@ -22,9 +22,9 @@ public class Board {
         initRows();
     }
 
-    public Board(ArrayList<Integer> rowsNeighboor) {
-        size = rowsNeighboor.size();
-        rows = rowsNeighboor;
+    public Board(ArrayList<Integer> rowsNeighbour) {
+        size = rowsNeighbour.size();
+        rows = rowsNeighbour;
     }
 
     //Initialization of columns and rows - 1 queen by column and by row
@@ -60,11 +60,11 @@ public class Board {
         return fitness;
     }
 
-    //Neighboors random
-    public Board neighboorRandom(){
+    //Neighbours random
+    public Board neighbourRandom(){
 
-        ArrayList<Integer> rowsNeighboor = new ArrayList<>();
-        System.arraycopy(rows,0,rowsNeighboor,0,size);
+        ArrayList<Integer> rowsNeighbour = new ArrayList<>();
+        System.arraycopy(rows,0,rowsNeighbour,0,size);
 
         Random r = new Random();
 
@@ -79,12 +79,37 @@ public class Board {
         }
 
         int temp = rows.get(row1); //number of the column
-        rowsNeighboor.set(row1, rows.get(row2));
-        rowsNeighboor.set(row2, temp);
+        rowsNeighbour.set(row1, rows.get(row2));
+        rowsNeighbour.set(row2, temp);
 
-        return new Board(rowsNeighboor);
+        return new Board(rowsNeighbour);
 
     }
+
+    //get neighbours
+    public ArrayList<Board> neighbours(){
+
+        ArrayList<Board> neighbours = new ArrayList<Board>();
+
+        ArrayList<Integer> rowsNeighbour = new ArrayList<>();
+
+        for(int i = 0 ; i < size ; i++ ){
+
+            for (int j = i + 1; j < size ; j++){
+
+                System.arraycopy(rows,0,rowsNeighbour,0,size);
+                rowsNeighbour.set(i, rows.get(j));
+                rowsNeighbour.set(j, rows.get(i));
+                neighbours.add(new Board(rowsNeighbour));
+
+            }
+
+        }
+
+        return neighbours;
+
+    }
+
 
 
 
