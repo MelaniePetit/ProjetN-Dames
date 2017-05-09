@@ -63,8 +63,8 @@ public class Board {
     //Neighbours random
     public Board neighbourRandom(){
 
-        ArrayList<Integer> rowsNeighbour = new ArrayList<>();
-        System.arraycopy(rows,0,rowsNeighbour,0,size);
+        ArrayList<Integer> rowsNeighbour = new ArrayList<>(rows);
+//        System.arraycopy(rows,0,rowsNeighbour,0,size);
 
         Random r = new Random();
 
@@ -91,13 +91,13 @@ public class Board {
 
         ArrayList<Board> neighbours = new ArrayList<Board>();
 
-        ArrayList<Integer> rowsNeighbour = new ArrayList<>();
+        ArrayList<Integer> rowsNeighbour;
 
         for(int i = 0 ; i < size ; i++ ){
 
             for (int j = i + 1; j < size ; j++){
 
-                System.arraycopy(rows,0,rowsNeighbour,0,size);
+                rowsNeighbour = new ArrayList<>(rows);
                 rowsNeighbour.set(i, rows.get(j));
                 rowsNeighbour.set(j, rows.get(i));
                 neighbours.add(new Board(rowsNeighbour));
@@ -110,7 +110,15 @@ public class Board {
 
     }
 
+    //méthode pour montrer la solution
+    public void showBoard(){
+        for (Integer i: rows) {
+            System.out.println(i + "x" + rows.get(i));
 
+        }
+    }
 
-
+    public int getSize() {
+        return size;
+    }
 }
