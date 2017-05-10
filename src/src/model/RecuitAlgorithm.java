@@ -73,7 +73,7 @@ public class RecuitAlgorithm {
 
         System.out.println("compteur : " + cpt);
         System.out.println("Fitness finale: " + bestFit);
-//        bestBoard.showBoard();
+//        selectBestBoard.showBoard();
 
     }
 

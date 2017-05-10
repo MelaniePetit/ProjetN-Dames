@@ -15,14 +15,10 @@ public class Board {
     //Array of rows
     private ArrayList<Integer> rows; //liste ou tableau ?
 
-    //Fitness
-    private int fitness;
-
     //Constructor
     public Board(int boardSize){
         size = boardSize;
         rows = new ArrayList<>();
-        fitness = Integer.MAX_VALUE;
         initRows();
     }
 
@@ -61,8 +57,6 @@ public class Board {
 
         }
 
-        this.fitness = fitness;
-
         return fitness;
     }
 
@@ -92,8 +86,8 @@ public class Board {
 
     }
 
-    //get neighbours
-    public ArrayList<Board> neighbours(){
+    //get selectNeighbours
+    public ArrayList<Board> selectNeighbours(){
 
         ArrayList<Board> neighbours = new ArrayList<Board>();
 
@@ -126,10 +120,6 @@ public class Board {
 
     public int getSize() {
         return size;
-    }
-
-    public int getFitness(){
-        return fitness;
     }
 
 }
