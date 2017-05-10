@@ -8,12 +8,10 @@ import java.util.ArrayList;
 public class TabouAlgorithm {
 
     private Board bestBoard;
-
     private int bestFit;
-
     private ArrayList<Board> t ; //a renommer
-
-    private int sizeT ;
+    private int sizeT;
+    private double duree;
 
     public TabouAlgorithm(Board b){
 
@@ -30,20 +28,19 @@ public class TabouAlgorithm {
         System.out.println(" --- Start TabouAlgorithm : --- ");
         System.out.println("Fitness init : "  + bestFit);
 
+        duree = System.nanoTime();
         algorithm();
     }
 
     public void algorithm(){
 
-        ArrayList<Board> neighbours = new ArrayList<>();
-
         Board lastBoard = bestBoard ;
-
+        ArrayList<Board> neighbours;
         Board bestNeigh ;
 
         int cpt = 0;
 
-        while( cpt < 30000 || neighbours.isEmpty() || bestFit == 0 ) {
+        do{
 
             //Initialisation de la liste avec les voisins du board initial
             neighbours = lastBoard.selectNeighbours();
@@ -52,28 +49,23 @@ public class TabouAlgorithm {
             for ( Board m : t ) {
 
                 if ( neighbours.contains(m) ) {
-
                     neighbours.remove(m);
-
                 }
             }
 
             if (!neighbours.isEmpty()) {
 
                 bestNeigh = selectBestBoard(neighbours); // Choix de y tel que ce soit la meilleure fitness de selectNeighbours
-
-                int delta = bestNeigh.fitness() - lastBoard.fitness(); //calcul de delta
+                int delta = bestNeigh.fitness() - lastBoard.fitness(); //Calcul de delta
 
                 //si cette fitness est moins bonne que celle de y on met le board dans T
                 if ( delta >= 0 ) {
+
                     if ( t.size() == sizeT ) {
-
                         t.remove(t.get(0));
-
                     }
 
                     t.add(lastBoard);
-
                 }
 
                 //si la fitness de y est inferieur a fbest, fbest = fy et best = y
@@ -81,6 +73,7 @@ public class TabouAlgorithm {
 
                     bestBoard = bestNeigh;
                     bestFit = bestBoard.fitness();
+                    System.out.println(bestFit);
                 }
 
                 lastBoard = bestNeigh ;
@@ -88,11 +81,12 @@ public class TabouAlgorithm {
 
             cpt ++ ;
 
-        }
+        }while( cpt < 30000 && !neighbours.isEmpty() && bestFit > 0 );
 
         System.out.println("compteur : " + cpt);
         System.out.println("Fitness finale: " + bestFit);
-
+        System.out.println("Temps : " + (System.nanoTime()-duree)/Math.pow(10,9) + " secondes");
+//        bestBoard.showBoard();
 
     }
 
@@ -103,9 +97,7 @@ public class TabouAlgorithm {
         for ( Board b : boards ) {
 
             if ( b.fitness() < bestB.fitness() ) {
-
                 bestB = b;
-
             }
 
         }

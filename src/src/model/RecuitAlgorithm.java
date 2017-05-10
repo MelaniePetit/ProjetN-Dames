@@ -1,6 +1,7 @@
 package src.model;
 
 import java.util.Random;
+import java.util.Timer;
 
 /**
  * Created by Mel on 13/03/2017.
@@ -10,8 +11,10 @@ public class RecuitAlgorithm {
     private Board bestBoard;
     private int bestFit;
     private double temp;
+    private double duree;
 
-    public RecuitAlgorithm(Board b, int nbTemp) {
+
+    public RecuitAlgorithm(Board b) {
 
         this.bestBoard = b;
         temp = 100*bestBoard.getSize();
@@ -20,6 +23,7 @@ public class RecuitAlgorithm {
         System.out.println(" --- Start RecuitAlgorithm : --- ");
         System.out.println("Fitness init : "  + bestFit);
 
+        duree = System.nanoTime();
         algorithm();
 
     }
@@ -28,10 +32,9 @@ public class RecuitAlgorithm {
 
         Board board = this.bestBoard;
         int fitness = board.fitness();
-
         int cpt = 0;
 
-        while (bestBoard.fitness() > 0 && cpt < 30000 && (temp > 1/10000)) {           //arret quand temp min atteinte, fitness = 0 ou après un certain nombre d'itération
+        while (bestBoard.fitness() > 0 && cpt < 100000) {           //arret quand temp min atteinte, fitness = 0 ou après un certain nombre d'itération
 
             //Creer un voisin
             Board neighBoard = board.neighbourRandom();
@@ -66,14 +69,15 @@ public class RecuitAlgorithm {
             }
 
             cpt ++;
-
-            temp = temp*0.95;           //Formule pour décrémenter la température ?
+            double mu = 1/cpt;
+            temp = 0.5*temp;
 
         }
 
         System.out.println("compteur : " + cpt);
         System.out.println("Fitness finale: " + bestFit);
-//        selectBestBoard.showBoard();
+        System.out.println("Temps : " + (System.nanoTime()-duree)/Math.pow(10,9) + " secondes");
+//        bestBoard.showBoard();
 
     }
 
