@@ -6,24 +6,21 @@ import java.util.Timer;
 /**
  * Created by Mel on 13/03/2017.
  */
-public class RecuitAlgorithm {
+public class RecuitAlgorithm extends Algorithm{
 
-    private Board bestBoard;
-    private int bestFit;
     private double temp;
-    private double duree;
-
 
     public RecuitAlgorithm(Board b) {
+        super();
 
         this.bestBoard = b;
         temp = 100*bestBoard.getSize();
-        bestFit = bestBoard.fitness();
+        fitInit = bestBoard.fitness();
+        bestFit = fitInit;
 
         System.out.println(" --- Start RecuitAlgorithm : --- ");
         System.out.println("Fitness init : "  + bestFit);
 
-        duree = System.nanoTime();
         algorithm();
 
     }
@@ -74,9 +71,8 @@ public class RecuitAlgorithm {
 
         }
 
-        System.out.println("compteur : " + cpt);
-        System.out.println("Fitness finale: " + bestFit);
-        System.out.println("Temps : " + (System.nanoTime()-duree)/Math.pow(10,9) + " secondes");
+        nbItera = cpt;
+        duree = (System.nanoTime()-duree)/Math.pow(10,9);
 //        bestBoard.showBoard();
 
     }

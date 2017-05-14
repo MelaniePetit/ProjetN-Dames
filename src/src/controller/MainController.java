@@ -7,15 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import src.model.Board;
-import src.model.RecuitAlgorithm;
-import src.model.TabouAlgorithm;
+import src.model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 
 public class MainController {
+
     @FXML
     private final ToggleGroup choiceAlgo = new ToggleGroup();
     @FXML
@@ -34,6 +33,7 @@ public class MainController {
     private int sizeBoard;
     private Parent root;
     private Board board;
+    private Algorithm algorithm;
 
     public MainController(){
         recuitSimule.setToggleGroup(choiceAlgo);
@@ -77,7 +77,7 @@ public class MainController {
             if (!(size.getText().equals("")) && testDigit(size.getText())) {
                 sizeBoard = Integer.parseInt(size.getText());
                 board = new Board(sizeBoard);
-                RecuitAlgorithm algorithm = new RecuitAlgorithm(board);
+                algorithm = new RecuitAlgorithm(board);
             } else {
                 errorSize();
                 return;
@@ -88,17 +88,7 @@ public class MainController {
             if (!(size.getText().equals(""))&& testDigit(size.getText())){
                 sizeBoard = Integer.parseInt(size.getText());
                 board = new Board(sizeBoard);
-                TabouAlgorithm algorithm = new TabouAlgorithm(board);
-            }
-            else{
-                errorSize();
-                return;
-
-            }
-        }
-        else if(grasp.isSelected()){
-            if (!(size.getText().equals(""))&& testDigit(size.getText())){
-                sizeBoard = Integer.parseInt(size.getText());
+                algorithm = new TabouAlgorithm(board);
             }
             else{
                 errorSize();
@@ -109,6 +99,7 @@ public class MainController {
         else if(genetique.isSelected()) {
             if (!(size.getText().equals(""))&& testDigit(size.getText())) {
                 sizeBoard = Integer.parseInt(size.getText());
+                algorithm = new GeneticAlgorithm(15, sizeBoard);
             } else {
                 errorSize();
                 return;
@@ -126,10 +117,16 @@ public class MainController {
 
         Scene scene = null;
         try {
+//            ResultController controller =
             final URL url = getClass().getResource("../view/Result.fxml");
             final FXMLLoader loader = new FXMLLoader(url);
+            ResultController controller = new ResultController();
+            loader.setController(controller);
             root = (AnchorPane) loader.load();
+            controller.init(algorithm.getFitInit(), algorithm.getBestFit(), algorithm.getNbItera(), algorithm.getDuree());
+
             scene = new Scene(root);
+
 
         } catch (IOException e) {
             e.printStackTrace();

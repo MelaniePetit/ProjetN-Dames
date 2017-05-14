@@ -13,6 +13,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import src.Main;
 
+import javax.swing.text.TabExpander;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -20,7 +21,7 @@ import java.util.Optional;
 /**
  * Created by Mel on 08/03/2017.
  */
-public class resultController {
+public class ResultController {
     private Main main;
     private BorderPane root = new BorderPane();
 
@@ -30,7 +31,26 @@ public class resultController {
     @FXML
     private GridPane grid;
 
-    public resultController() {
+    @FXML
+    private Text fitInit = new Text();
+    @FXML
+    private Text fitFinal = new Text();
+    @FXML
+    private Text nbIterat = new Text();
+    @FXML
+    private Text temps = new Text();
+
+
+    public ResultController() {
+
+
+    }
+
+    public void init(int init, int fitfin, int nbIt, double temps){
+        fitInit.setText(Integer.toString(init));
+        fitFinal.setText(Integer.toString(fitfin));
+        nbIterat.setText(Integer.toString(nbIt));
+        this.temps.setText(Double.toString(temps) + " secondes");
     }
 
 

@@ -13,7 +13,7 @@ public class Board {
     private int size;
 
     //Array of rows
-    private ArrayList<Integer> rows; //liste ou tableau ?
+    private ArrayList<Integer> rows;
 
     //Constructor
     public Board(int boardSize){
@@ -122,4 +122,7 @@ public class Board {
         return size;
     }
 
+    public ArrayList<Integer> getRows() {
+        return rows;
+    }
 }

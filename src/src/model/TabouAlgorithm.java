@@ -5,30 +5,27 @@ import java.util.ArrayList;
 /**
  * Created by Mel on 27/03/2017.
  */
-public class TabouAlgorithm {
+public class TabouAlgorithm extends Algorithm {
 
-    private Board bestBoard;
-    private int bestFit;
     private ArrayList<Board> t ; //a renommer
     private int sizeT;
-    private double duree;
 
     public TabouAlgorithm(Board b){
+        super();
 
         //Board initial
-        this.bestBoard = b;
+        bestBoard = b;
 
         //Fitness initiale
-        this.bestFit = bestBoard.fitness();
+        fitInit = bestBoard.fitness();
+        bestFit = fitInit;
 
-        //Board qui sert a quoi?
-        this.sizeT = 1 ;
-        this.t = new ArrayList<>(sizeT);
+        sizeT = 1 ;
+        t = new ArrayList<>(sizeT);
 
         System.out.println(" --- Start TabouAlgorithm : --- ");
         System.out.println("Fitness init : "  + bestFit);
 
-        duree = System.nanoTime();
         algorithm();
     }
 
@@ -73,7 +70,6 @@ public class TabouAlgorithm {
 
                     bestBoard = bestNeigh;
                     bestFit = bestBoard.fitness();
-                    System.out.println(bestFit);
                 }
 
                 lastBoard = bestNeigh ;
@@ -83,9 +79,8 @@ public class TabouAlgorithm {
 
         }while( cpt < 30000 && !neighbours.isEmpty() && bestFit > 0 );
 
-        System.out.println("compteur : " + cpt);
-        System.out.println("Fitness finale: " + bestFit);
-        System.out.println("Temps : " + (System.nanoTime()-duree)/Math.pow(10,9) + " secondes");
+        nbItera = cpt;
+        duree = (System.nanoTime()-duree)/Math.pow(10,9);
 //        bestBoard.showBoard();
 
     }
