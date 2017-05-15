@@ -50,7 +50,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <RadioButton fx:id="tabou" mnemonicParsing="false" text="Tabou" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -66,13 +65,8 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </RadioButton>
-                  <RadioButton fx:id="grasp" mnemonicParsing="false" text="GRASP" toggleGroup="$choiceAlgo" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                  </RadioButton>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un algorithme :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <RadioButton fx:id="genetique" mnemonicParsing="false" text="Génétique" toggleGroup="$choiceAlgo" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <RadioButton fx:id="genetique" mnemonicParsing="false" text="Génétique" toggleGroup="$choiceAlgo" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="20.0" />
                      </GridPane.margin>
