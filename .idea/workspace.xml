@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProjetN-Dames/src/view/Start.fxml" afterPath="$PROJECT_DIR$/out/production/ProjetN-Dames/src/view/Start.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/src/controller/MainController.java" afterPath="$PROJECT_DIR$/src/src/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/src/controller/ResultController.java" afterPath="$PROJECT_DIR$/src/src/controller/ResultController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/src/model/GeneticAlgorithm.java" afterPath="$PROJECT_DIR$/src/src/model/GeneticAlgorithm.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -89,8 +86,8 @@
       <file leaf-file-name="GeneticAlgorithm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/src/model/GeneticAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="124" column="59" lean-forward="false" selection-start-line="124" selection-start-column="59" selection-end-line="124" selection-end-column="59" />
+            <state relative-caret-position="462">
+              <caret line="142" column="9" lean-forward="true" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,7 +98,7 @@
       <file leaf-file-name="ResultController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/controller/ResultController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
+            <state relative-caret-position="651">
               <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
               <folding />
             </state>
@@ -111,7 +108,7 @@
       <file leaf-file-name="RecuitAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/model/RecuitAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
+            <state relative-caret-position="1260">
               <caret line="60" column="24" lean-forward="false" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -123,7 +120,7 @@
       <file leaf-file-name="TabouAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/model/TabouAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
+            <state relative-caret-position="651">
               <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
               <folding />
             </state>
@@ -133,7 +130,7 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1197">
+            <state relative-caret-position="1890">
               <caret line="101" column="54" lean-forward="false" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="54" />
               <folding />
             </state>
@@ -143,7 +140,7 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/model/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="252">
               <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -898,7 +895,8 @@
       <workItem from="1494400075935" duration="574000" />
       <workItem from="1494404225298" duration="4460000" />
       <workItem from="1494610446768" duration="21279000" />
-      <workItem from="1494835018827" duration="4499000" />
+      <workItem from="1494835018827" duration="5127000" />
+      <workItem from="1494844653850" duration="2858000" />
     </task>
     <task id="LOCAL-00001" summary="algorithm, first draw">
       <created>1489754640184</created>
@@ -984,11 +982,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494416856290</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="gen a ameliorer">
+      <created>1494839582257</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1494839582257</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163916000" />
+    <option name="totallyTimeSpent" value="167402000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1012,8 +1017,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33861834" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1223103" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33116883" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31596828" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1024,8 +1029,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33069083" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1058,18 +1063,11 @@
     <MESSAGE value="Recuit ok, modifier temperature" />
     <MESSAGE value="Initialisation tabou" />
     <MESSAGE value="TabouAlgorithm finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="TabouAlgorithm finished" />
+    <MESSAGE value="gen a ameliorer" />
+    <option name="LAST_COMMIT_MESSAGE" value="gen a ameliorer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/src/model/GeneticAlgorithm.java</url>
-          <line>88</line>
-          <properties />
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
@@ -1253,10 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="56" column="19" lean-forward="false" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="19" />
-          <folding>
-            <element signature="e#1519#1520#0" expanded="false" />
-            <element signature="e#1546#1547#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,7 +1284,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/model/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="252">
           <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1302,7 +1296,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/controller/ResultController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
+        <state relative-caret-position="651">
           <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
           <folding />
         </state>
@@ -1310,7 +1304,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/model/RecuitAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="1260">
           <caret line="60" column="24" lean-forward="false" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1320,7 +1314,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/model/TabouAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
+        <state relative-caret-position="651">
           <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
           <folding />
         </state>
@@ -1339,7 +1333,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
+        <state relative-caret-position="1890">
           <caret line="101" column="54" lean-forward="false" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="54" />
           <folding />
         </state>
@@ -1347,8 +1341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/model/GeneticAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="124" column="59" lean-forward="false" selection-start-line="124" selection-start-column="59" selection-end-line="124" selection-end-column="59" />
+        <state relative-caret-position="462">
+          <caret line="142" column="9" lean-forward="true" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -77,7 +77,7 @@ public class GeneticAlgorithm extends Algorithm {
         //portion proportionnelle
         double test = 0;
         for (int i = 0 ; i < fit.size() ; i++) {
-            double valeur = (double) ( 1 - (Math.pow(fit.get(i),2) / totalFit));         //ne pas enlever le cast !!
+            double valeur = (double) ( 1 - (Math.pow(fit.get(i),2) / totalFit));         //ne pas enlever le cast !! fitness au carré : dans notre situation il faudrait que le chiffre soit grand quand la fitness est petite : divisé par 2 ?
             double arrondi = (double) Math.round(valeur * 100)/100;
             portion.add(arrondi);
         }
@@ -115,7 +115,8 @@ public class GeneticAlgorithm extends Algorithm {
 
             }
         }
-        population = new ArrayList<>(reproduction);
+
+        population = reproduction; // a la place de pop = new ArrayList()<reprouction>
     }
 
     //CROISEMENT
@@ -127,7 +128,7 @@ public class GeneticAlgorithm extends Algorithm {
         //On croise deux par deux, si la pop est de taille impaire, on ne touche pas le dernier individu
         if (bestBoard.getSize()%2 == 0){
 
-            for (int i = 0 ; i < population.size() -1 ; i++){
+            for (int i = 0 ; i < population.size() ; i++){ // pourquoi population.size() -1 ?
 
                 int temp;
                 for (int j = 0 ; j < coupure ; j ++) {
@@ -141,7 +142,7 @@ public class GeneticAlgorithm extends Algorithm {
             }
         }
         else {
-            for (int i = 0 ; i < population.size() - 2 ; i++){
+            for (int i = 0 ; i < population.size() - 1 ; i++){ // pourquoi -2
 
                 int temp;
                 for (int j = 0 ; j < coupure ; j ++) {
