@@ -29,8 +29,14 @@ public class MainController {
     private TextField size;
     @FXML
     private Button launch;
+    @FXML
+    private TextField taboueList;
+    @FXML
+    private TextField population;
 
     private int sizeBoard;
+    private int sizeTaboueListe;
+    private int sizePopulation;
     private Parent root;
     private Board board;
     private Algorithm algorithm;
@@ -57,7 +63,7 @@ public class MainController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur size Board");
         alert.setHeaderText("Une erreur est survenue !");
-        alert.setContentText("Veuillez renseigner un nombre pour le Board avant de lancer le programme.");
+        alert.setContentText("Veuillez renseigner des nombres corrects avant de lancer le programme.");
 
         alert.showAndWait();
     }
@@ -85,10 +91,11 @@ public class MainController {
             }
         }
         else if(tabou.isSelected()){
-            if (!(size.getText().equals(""))&& testDigit(size.getText())){
+            if (!(size.getText().equals(""))&& testDigit(size.getText()) && !(taboueList.getText().equals(""))&& testDigit(taboueList.getText())){
                 sizeBoard = Integer.parseInt(size.getText());
+                sizeTaboueListe = Integer.parseInt(taboueList.getText());
                 board = new Board(sizeBoard);
-                algorithm = new TabouAlgorithm(board);
+                algorithm = new TabouAlgorithm(board, sizeTaboueListe);
             }
             else{
                 errorSize();
@@ -97,9 +104,10 @@ public class MainController {
             }
         }
         else if(genetique.isSelected()) {
-            if (!(size.getText().equals(""))&& testDigit(size.getText())) {
+            if (!(size.getText().equals(""))&& testDigit(size.getText()) && !(population.getText().equals(""))&& testDigit(population.getText())) {
                 sizeBoard = Integer.parseInt(size.getText());
-                algorithm = new GeneticAlgorithm(10000, sizeBoard);
+                sizePopulation = Integer.parseInt(population.getText());
+                algorithm = new GeneticAlgorithm(sizePopulation, sizeBoard);
             } else {
                 errorSize();
                 return;
@@ -153,6 +161,23 @@ public class MainController {
             alert.close();
         }
 
+    }
+
+    @FXML
+    public void checkRadioBox(){
+        if (recuitSimule.isSelected()){
+            taboueList.setDisable(true);
+            population.setDisable(true);
+
+        }
+        if (tabou.isSelected()){
+            taboueList.setDisable(false);
+            population.setDisable(true);
+        }
+        if (genetique.isSelected()){
+            taboueList.setDisable(true);
+            population.setDisable(false);
+        }
     }
 
 }

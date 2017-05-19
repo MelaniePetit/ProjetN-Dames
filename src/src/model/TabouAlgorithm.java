@@ -10,7 +10,7 @@ public class TabouAlgorithm extends Algorithm {
     private ArrayList<Board> t ; //a renommer
     private int sizeT;
 
-    public TabouAlgorithm(Board b){
+    public TabouAlgorithm(Board b, int size){
         super();
 
         //Board initial
@@ -20,7 +20,7 @@ public class TabouAlgorithm extends Algorithm {
         fitInit = bestBoard.fitness();
         bestFit = fitInit;
 
-        sizeT = 1 ;
+        sizeT = size ;
         t = new ArrayList<>(sizeT);
 
         System.out.println(" --- Start TabouAlgorithm : --- ");
@@ -70,14 +70,16 @@ public class TabouAlgorithm extends Algorithm {
 
                     bestBoard = bestNeigh;
                     bestFit = bestBoard.fitness();
+                    System.out.println(bestFit);
                 }
 
                 lastBoard = bestNeigh ;
             }
 
             cpt ++ ;
+            System.out.println(cpt);
 
-        }while( cpt < 30000 && !neighbours.isEmpty() && bestFit > 0 );
+        }while( cpt < 2000 && !neighbours.isEmpty() && bestFit > 0 );
 
         nbItera = cpt;
         duree = (System.nanoTime()-duree)/Math.pow(10,9);
