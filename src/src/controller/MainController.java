@@ -99,7 +99,7 @@ public class MainController {
         else if(genetique.isSelected()) {
             if (!(size.getText().equals(""))&& testDigit(size.getText())) {
                 sizeBoard = Integer.parseInt(size.getText());
-                algorithm = new GeneticAlgorithm(15, sizeBoard);
+                algorithm = new GeneticAlgorithm(10000, sizeBoard);
             } else {
                 errorSize();
                 return;

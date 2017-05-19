@@ -43,7 +43,6 @@ public class ResultController {
 
     public ResultController() {
 
-
     }
 
     public void init(int init, int fitfin, int nbIt, double temps){
