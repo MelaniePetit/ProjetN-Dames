@@ -68,6 +68,7 @@ public class RecuitAlgorithm extends Algorithm{
             cpt ++;
             double mu = 1/cpt;
             temp = 0.5*temp;
+            //temp = mu*temp;
 
         }
 
