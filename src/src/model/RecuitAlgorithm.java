@@ -14,7 +14,8 @@ public class RecuitAlgorithm extends Algorithm{
         super();
 
         this.bestBoard = b;
-        temp = 100*bestBoard.getSize();
+        //temp = 100*bestBoard.getSize();
+        temp = 1000;
         fitInit = bestBoard.fitness();
         bestFit = fitInit;
 
@@ -67,7 +68,7 @@ public class RecuitAlgorithm extends Algorithm{
 
             cpt ++;
             double mu = 1/cpt;
-            temp = 0.5*temp;
+            temp = 0.4*temp;
             //temp = mu*temp;
 
         }
