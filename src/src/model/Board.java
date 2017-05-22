@@ -52,11 +52,8 @@ public class Board {
                     fitness++;
 
                 }
-
             }
-
         }
-
         return fitness;
     }
 
@@ -64,7 +61,6 @@ public class Board {
     public Board neighbourRandom(){
 
         ArrayList<Integer> rowsNeighbour = new ArrayList<>(rows);
-//        System.arraycopy(rows,0,rowsNeighbour,0,size);
 
         Random r = new Random();
 
@@ -105,9 +101,7 @@ public class Board {
                 neighbours.add(new Board(rowsNeighbour));
 
             }
-
         }
-
         return neighbours;
 
     }
