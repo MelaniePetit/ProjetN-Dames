@@ -15,7 +15,7 @@ public class RecuitAlgorithm extends Algorithm{
 
         this.bestBoard = b;
         //temp = 100*bestBoard.getSize();
-        temp = 1000;
+        temp = 500;
         fitInit = bestBoard.fitness();
         bestFit = fitInit;
 

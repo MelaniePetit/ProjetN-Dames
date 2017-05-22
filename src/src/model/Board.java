@@ -87,15 +87,17 @@ public class Board {
     }
 
     //get selectNeighbours
-    public ArrayList<Board> selectNeighbours(){
+    public ArrayList<Board> selectNeighbours(int sizeStop){
 
         ArrayList<Board> neighbours = new ArrayList<Board>();
 
         ArrayList<Integer> rowsNeighbour;
 
-        for(int i = 0 ; i < size ; i++ ){
+        int stop = Math.min(sizeStop, size);
 
-            for (int j = i + 1; j < size ; j++){
+        for(int i = 0 ; i < stop ; i++ ){
+
+            for (int j = i + 1; j < stop ; j++){
 
                 rowsNeighbour = new ArrayList<>(rows);
                 rowsNeighbour.set(i, rows.get(j));

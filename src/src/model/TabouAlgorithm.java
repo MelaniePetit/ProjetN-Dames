@@ -40,7 +40,7 @@ public class TabouAlgorithm extends Algorithm {
         do{
 
             //Initialisation de la liste avec les voisins du board initial
-            neighbours = lastBoard.selectNeighbours();
+            neighbours = lastBoard.selectNeighbours(100);
 
             //Enlever les boards de T si ils sont présents dans V
             for ( Board m : t ) {
