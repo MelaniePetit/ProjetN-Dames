@@ -39,7 +39,7 @@ public class GeneticAlgorithm extends Algorithm {
 
         int cpt = 0;
 
-        while (bestFit != 0 && cpt < 1000){
+        while (bestFit != 0 && cpt < bestBoard.getSize()*100){
             System.out.println("---------- " + cpt + " ----------");
             System.out.println("bestFit : " + bestFit);
             trouverBestBoard();
