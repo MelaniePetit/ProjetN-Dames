@@ -93,8 +93,8 @@ public class TabouAlgorithm extends Algorithm {
     public Board selectBestBoard(ArrayList<Board> boards){
 
         Board bestB = boards.get(0);
-        if (bestBoard.getSize() > 1) {
-            for (int i = 0; i < 100; i++) {
+        if (bestBoard.getSize() > 200) {
+            for (int i = 0; i < 2000; i++) {
                 Random r = new Random();
                 int choice = r.nextInt(boards.size());
                 HashSet cpt = new HashSet();
